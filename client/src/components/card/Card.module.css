@@ -1,0 +1,95 @@
+.container {
+    /* z-index: -2; */
+    border: ridge #0075d9 5px;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: yellow; */
+    background: rgba(0,0,10,.8);
+    font-family: 'Courier New', Courier, monospace;
+    width: 16em;
+    /* height: fit-content;  */
+    height: 30em;
+    font-size: 1em;
+    /* height: 100%; */
+    margin: 3rem 1em 0em 1em;
+    padding: 0.5em;
+    color: rgb(216, 213, 216);
+    /* box-shadow: 0 0 10px rgba(86, 82, 82, 0.8); */
+    box-shadow: 0 10px 6px #000;
+    transform-style: preserve-3d;
+    /*  */transform: translateZ(-2em) rotateX(8deg);
+    transform: perspective(60em) rotateX(10deg);
+    transition: all 1s ease;
+    
+}
+
+.container:hover {
+    box-shadow: 0 2px 4px #000;
+    transform: rotate(0);
+}
+.container img {
+    border-radius: 5px;
+    margin-top: 0.2em;
+    
+}
+.content__img {
+    width: 14em;
+    height: 12em;
+    border-radius: 15%;
+    position: relative;
+    overflow: hidden;
+    transition: transform .4s;
+}
+.content__img:hover img {
+    
+    transform: scale(1.2);
+}
+.container button {
+    border-radius: 0.5em;
+    border: #00ff40 solid;
+    margin-top: 0.2em;
+    background-color: rgb(71, 30, 84);
+    color: rgb(216, 213, 216);
+    font-size: 1.2em;
+    transform: scale(1);
+    padding: 0.5em;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #ff6f3c;
+    transform: scale(1.1);
+}
+
+.container h2 {
+    
+    font-size: 1.2em;
+    margin: 0.2em;
+}
+
+.titleName{
+        /* font-family: rick_and_morty_title; */
+        text-align: center;
+        padding: 1em;
+        color: #6eb4f0;
+}
+.titleName:hover {
+    color:#00ff40 ;
+}
+.img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    
+    
+}
+.botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    
+}

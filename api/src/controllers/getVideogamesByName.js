@@ -8,20 +8,30 @@ const {
 
 //GET por ID
 const getVideogameByName = async (name) => {
-
+    
     let res = await axios(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)
     let datos = res.data.results;
-    console.log(res.data);
-    /* let game = {
-        id: res.data.id,
-        name: res.data.name,
-        image: res.data.background_image,
-        // platforms: res.data.platforms, //ver porque me sale error cuando lo activo
-        released: res.data.released,
-        description: res.data.description,
-        rating: res.data.rating
-    } */
-    return dato
+  
+    let gamesApi = datos.map( (e)=> {
+        return {
+            id: e.id,
+            name: e.name,
+            released: e.released,
+            description: e.description,
+            rating: e.rating,
+            background_image: e.background_image,
+            /* platforms: e.platforms.map(el => {
+                  return el.platform
+            }
+              ),*/
+            genres: e.genres.map(el => {
+                return {name: el.name}
+            })
+        }
+    })
+    /* console.log(cant);
+    console.log(gamesApi.length); */
+    return gamesApi
 }
 
 

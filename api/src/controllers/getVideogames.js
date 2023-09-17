@@ -1,34 +1,49 @@
 const axios = require('axios')
 require('dotenv').config();
-const {
-    API_KEY,
-  } = process.env;
+const { API_KEY } = process.env;
+  const{ VideoGame, Genre } = require("../db");
 
-// con async-await.....Hacemos la peticion a la api por id con axios
 
-//GET por ID
-const getVideogames = async ({page, page_size}) => {
+//GET Api 
+const getVideogames = async () => {
+    // con async-await.....Hacemos la peticion a la api con axios
+    let res = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`)
+    //console.log(res.data.results);
+        let cant = res.data.count
+        let datos = res.data.results; 
+    // mapeo los datos que me interesan    
+    let gamesApi = datos.map( (e)=> {
+        return {
+            id: e.id,
+            name: e.name,
+            released: e.released,
+            description: e.description,
+            rating: e.rating,
+            background_image: e.background_image,
+            /* platforms: e.platforms.map(el => {
+                  return el.platform
+            }
+              ), */
+            Genres: e.genres.map(el => {
+                return {name: el.name}
+            })
+        }
+    })
+    console.log(cant);
+    console.log(gamesApi.length);  
 
-    let res = await axios(`https://api.rawg.io/api/games?page=${page}&page_size=${page_size}&key=${API_KEY}`)
-//console.log(res.data.results);
-let datos = res.data.results; 
-let games =[];   
-for (let i = 0; i < datos.length; i++) {
-    games.push({
-        id: datos[i].id,
-        name: datos[i].name,
-        released: datos[i].released,
-        description: datos[i].description,
-        rating: datos[i].rating,
-        image: datos[i].background_image
-    });
+    //Get a los datos de la DB uniendo las dos tablas
+    const gamesDb = await VideoGame.findAll({
+        include: {
+            model: Genre,
+            attributes: ["name"],
+            through: { attributes: [] }
+        }
+    }) 
+    //Concateno ambas infos
+    const games = gamesApi.concat(gamesDb)
     
-}
-    
-     console.log(datos[0].description);
-     console.log(datos[1].name);      
-
-    return games
+    return (games)
 }
 
 

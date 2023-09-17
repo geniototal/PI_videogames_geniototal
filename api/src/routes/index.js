@@ -7,8 +7,10 @@ const router = Router();
 
 const videogamesRoutes = require('./videogamesRoutes')
 const genresRoutes = require('./genresRoutes')
+const videosByName = require('./videosByName')
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+router.use("/videogames/name", videosByName)
 router.use("/videogames", videogamesRoutes)
 router.use("/genres", genresRoutes)
 

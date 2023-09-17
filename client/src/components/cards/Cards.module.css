@@ -1,0 +1,14 @@
+.container {
+    border: none;
+    /* background-color: #ff6f3c; */
+    margin: 5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90vw;
+   
+    /* padding: 0.5em; */
+    border-radius: 2em;
+    /* perspective: 1500px; */
+}

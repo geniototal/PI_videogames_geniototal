@@ -1,22 +1,23 @@
 const express = require('express')
 const router = express.Router()
-const getGenres = require('../controllers/getGenres')
+
+const getVideogamesByName = require('../controllers/getVideogamesByName')
+
 
 router.get("/", async (req, res) => {
+   const { name } = req.query
     
     try {
-        let genres = await getGenres()
-        if(genres) {
+        let videogame = await getVideogamesByName(name)
+        if(videogame) {
             
-            res.status(200).json(genres)
+            res.status(200).json(videogame)
         } else {
             res.status(404).json({"error": "No se encuentran datos"})
-        }
+        } 
+        
     } catch {
         res.status(500).json({"error": "Fallo de conexion con la api"})
     }
 })
-
-
-
 module.exports = router

@@ -1,0 +1,23 @@
+.background {    
+    min-height: 100vh;
+    position: absolute;
+    background-image: url(./img/videogame.png);
+    background-size:cover;
+    top:0;
+    background-repeat: space;
+    height: 1800vh;
+    width: 100%;
+    z-index: -3;
+    background-attachment: fixed;
+
+}
+@media (max-width: 600px){
+    .background {
+        height: 400%;  
+    }
+}
+@media (min-hight: 100vh){
+    .background {
+        height: 200%;
+    }
+}

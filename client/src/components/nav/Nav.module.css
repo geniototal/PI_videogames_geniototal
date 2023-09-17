@@ -1,0 +1,77 @@
+.header {
+   position: fixed;
+}
+.nav {
+   position: fixed; 
+   z-index: 100;
+   display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* background-color: yellow; */
+    background: rgba(0,0,0,.7);
+    box-shadow: 0 10px 4px #000;
+    /* border: red; */
+    /* margin-top: 1em; */
+   /*  margin-bottom: 5em; */ 
+  
+    margin:1em auto;
+    height: 4em;
+    width: 90vw;
+    border-radius: 2em;
+    
+ }
+ /* Add blur to header */
+.blur-header::after {
+   content: '';
+   position: absolute;
+   width: 1000%;
+   height: 100%;
+   background-color: hsla(0, 0%, 100%, .3);
+   backdrop-filter: blur(24px);
+   -webkit-backdrop-filter: blur(24px); /*for Safari*/
+   top: 0;
+   left: 0;
+   z-index: -1;
+ }
+ .button {
+    background: rgba(0,0,0,.7);
+    width: 8vw;
+    height: 5vh;
+    margin-right: .8em;
+    border-radius: 1em;
+    color: white;
+    transition: 0.5s
+ }
+ .button:hover {
+    background: rgba(244, 239, 239, 0.7);
+    width: 8vw;
+    height: 5vh;
+    margin-right: .8em;
+    border-radius: 1em;
+    color: black
+ }
+ @media (max-width: 980px){
+   .nav {
+      flex-direction: column;
+      height: 23em;
+      
+   }
+   .contButton {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+   }
+   .button {
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+      width: 80%;
+      border-radius: 0.5em;
+   }
+   .button:hover{
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+      width: 80%;
+      border-radius: 0.5em; 
+   }
+ }
