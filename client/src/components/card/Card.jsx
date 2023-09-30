@@ -1,14 +1,21 @@
 import style from './Card.module.css';
-const Card = ({id, name, image, genres}) => {
+import { Link } from 'react-router-dom';
+
+const Card = ({id, name, image, genres, rating}) => {
     return (
       <>
           <div className={style.container}>
+                <h3 className={style.rating}>Rating: {rating}</h3>
                 <h2 className={style.titleName}>{name}</h2>
                 <div className= {style.content__img}>
                   <img className= {style.img} src={image} alt='' />
                 </div>
-                <h2><u>Género</u></h2>
-                <h2>{genres?.map(e => e.name + ", ")}</h2>
+                <h3 className={style.genero}><u>Género</u></h3>
+                <h3 className={style.genero}>{genres?.map(e => e + ", ")}</h3>
+                
+                <Link to={`/videogames/${id}`}>
+                  <button className={style.button}>See more...</button>
+                </Link>
           </div>
           
       </>

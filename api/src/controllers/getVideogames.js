@@ -6,12 +6,16 @@ const { API_KEY } = process.env;
 
 //GET Api 
 const getVideogames = async () => {
-    // con async-await.....Hacemos la peticion a la api con axios
-    let res = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`)
-    //console.log(res.data.results);
-        let cant = res.data.count
-        let datos = res.data.results; 
-    // mapeo los datos que me interesan    
+    // con async-await.....Hacemos la peticion a la api con axios3 veces para traer las 100 cards
+    let res_1 = await axios(`https://api.rawg.io/api/games?page=1&page_size=40&key=${API_KEY}`)
+    let datos_1 = res_1.data.results;
+    let res_2 = await axios(`https://api.rawg.io/api/games?page=2&page_size=40&key=${API_KEY}`)
+    let datos_2 = res_2.data.results;
+    let res_3 = await axios(`https://api.rawg.io/api/games?page=3&page_size=20&key=${API_KEY}`)
+    let datos_3 = res_3.data.results;
+    // concateno y mapeo los datos que me interesan    
+    let datos = datos_1.concat( datos_2, datos_3)
+    
     let gamesApi = datos.map( (e)=> {
         return {
             id: e.id,
@@ -25,14 +29,15 @@ const getVideogames = async () => {
             }
               ), */
             Genres: e.genres.map(el => {
-                return {name: el.name}
+                //return {name: el.name}
+                return el.name
             })
         }
     })
-    console.log(cant);
+    //console.log(cant);
     console.log(gamesApi.length);  
 
-    //Get a los datos de la DB uniendo las dos tablas
+    //Get a los datos de la DB uniendo las dos tablas por medio de tabla intermedia
     const gamesDb = await VideoGame.findAll({
         include: {
             model: Genre,
@@ -40,7 +45,7 @@ const getVideogames = async () => {
             through: { attributes: [] }
         }
     }) 
-    //Concateno ambas infos
+    //Concateno ambas infos de la api y de la db
     const games = gamesApi.concat(gamesDb)
     
     return (games)

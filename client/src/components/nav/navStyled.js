@@ -36,7 +36,7 @@ export const NavContainer = styled.nav`
             position: fixed;
             top:15vh;
             right: 0;
-            width: 20%;
+            width: 25%;
             padding-top: 3rem;
             padding-bottom: 1.5rem;
             height: 65vh;

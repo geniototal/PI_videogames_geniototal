@@ -2,21 +2,18 @@ import { useState } from 'react';
 import { DivSearch, Btn,Input} from './searchStyle';
 
 export default function SearchBar({onSearch}) {
-   /* const handleSearch = () => {
-      const inputSearch = document.getElementById('inputSearch');
-      onSearch(inputSearch.value);
-      inputSearch.value = "";
-   } */
-   const [id, setId] = useState('')
+   
+   const [name, setName] = useState('')
 
    function handleChange(event){
       // console.log(event.target.value);
-      setId(event.target.value)
+      setName(event.target.value)
    }
    return (
       <DivSearch>
-          <Input type='search' onChange={handleChange}/>
-         <Btn onClick={()=> onSearch(id)}>Search</Btn>
+          <Input type='search' onChange={handleChange} placeholder= "Name"/>
+         <Btn onClick={()=> onSearch(name)}><i className="ri-search-eye-line"></i></Btn>
+         
       </DivSearch>
    );
 }

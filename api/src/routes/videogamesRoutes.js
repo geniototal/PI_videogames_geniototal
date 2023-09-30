@@ -11,7 +11,7 @@ router.get("/:id", async (req, res) => {
         if(videogame?.name) {
             res.status(200).json(videogame)
         } else {
-            res.status(404).json({"error": "No se encontro un videoame con ese id"})
+            res.status(404).json({"error": "No se encontro un videogame con ese id"})
         }
     } catch {
         res.status(500).json({"error": "Fallo de conexion con la api"})
@@ -37,20 +37,21 @@ router.get("/", async (req, res) => {
 router.post('/', async(req, res) => {
     
     try {
-        let { name, description, platforms, background_image, released, rating, genres } = req.body
-        console.log("Aca", name, description, platforms, background_image, released, rating, genres);
+        let { name, description, background_image, released, rating, genres, isofDb } = req.body
+        console.log("Aca", name, description, background_image, released, rating, genres, isofDb);
         if(!name ||  !released || !background_image || !description || !rating || !genres) {   
             res.status(401).send("Faltan datos")
             return
         }
+        //console.log("que carajp pasa"+ {name});
         let allGames = await postGame({
             name,
             description,
-            platforms,
             released,
             background_image,
-            rating,
-            genres    
+            rating: Number({rating}),
+            genres,
+            isofDb    
         })
     
         return res.status(200).json(allGames)

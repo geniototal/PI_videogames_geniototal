@@ -1,0 +1,46 @@
+.container {
+    color: rgb(251, 235, 235);
+    margin-top: 6em;
+    scroll-behavior: initial;
+}
+
+.img {
+    position:absolute;
+    width: 100%;
+    z-index: -1;
+    top:0;
+    left:0
+}
+.contenedor_texto {
+    position: relative;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    width: 80%;
+    margin: auto;
+    background-color: rgba(123, 119, 119, 0.8);
+}
+.titleName {
+    color:rgb(40, 69, 135);
+    font-size: 1.8em;
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+.description {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 1em;
+    font-size: 1.2em;
+}
+.description_text {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 1em;
+}
+.h2 { 
+    font-size: 1.2em;
+    padding-bottom: 1em;
+}
+.span {
+    padding-top: .5em;
+}

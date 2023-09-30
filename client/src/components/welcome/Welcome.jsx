@@ -1,12 +1,12 @@
 //import styles from './welcome.module.css'
-import { Button } from './welcomeStyled';
+import { Button, Title } from './welcomeStyled';
 import { Link } from 'react-router-dom';
 
 const Welcome = (props) => {
   return (
     <>
         <div>
-            <h1> Welcome to Henry Videogames</h1>
+            <Title> Welcome to Henry Videogames</Title>
             <Button as={Link} to="/videogames" variant="primary">Enter</Button>
         </div>
         

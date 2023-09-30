@@ -21,7 +21,9 @@ const Nav = (props) => {
                         Home</NavLink></h3>
                          
                     <h3><NavLink to= "/filter" className= {({isActive})=> isActive ? "activo" : "button"}>
-                        Filter</NavLink></h3>    
+                        Filter</NavLink></h3>
+                    <h3><NavLink to= "/addVideogames" className= {({isActive})=> isActive ? "activo" : "button"}>
+                        AddGames</NavLink></h3>     
         
                     <h3 className= "button" onClick={() => navigate(-1)}>Atras</h3>
                     

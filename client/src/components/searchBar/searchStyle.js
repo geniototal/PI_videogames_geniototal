@@ -7,7 +7,7 @@ justify-content: center;
 `
 
 export const Btn = styled.button`
-    border-radius: 0.5em;
+  /*   border-radius: 0.5em;
     margin-left: 1rem;
     width: 85px;
     padding: 0.3em;
@@ -18,7 +18,10 @@ export const Btn = styled.button`
     font-size: 1em;
     transform-style: preserve-3d;
     transform: translateZ(-20px) rotateX(20deg);
-    position:relative;
+    position:relative; */
+    font-size: 1.5em;
+    
+    color: blue;
     &:hover {
       background-color: #00ff40;
       cursor: pointer;
@@ -28,7 +31,7 @@ export const Btn = styled.button`
  export const Input = styled.input`
     border-radius: 0.5em;
     background-color:#ececec;
-    width: 80px;
+    width: 250px;
     margin-left: 0.5em;
     padding: 0.5em;
     border: solid rgb(12, 20, 69);
