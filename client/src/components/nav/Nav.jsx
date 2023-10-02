@@ -14,7 +14,7 @@ const Nav = (props) => {
     return <>
             
             <NavContainer>
-                <h1 className="h1">Videogames</h1>
+                <h1 className= "h1">Videogames</h1>
                 
                 <div className={`links ${clicked ? 'active' : ''}`}>
                     <h3><NavLink to= "/videogames" className= {({isActive})=> isActive ? "activo" : "button"}>
@@ -25,11 +25,12 @@ const Nav = (props) => {
                     <h3><NavLink to= "/addVideogames" className= {({isActive})=> isActive ? "activo" : "button"}>
                         AddGames</NavLink></h3>     
         
+                    
                     <h3 className= "button" onClick={() => navigate(-1)}>Atras</h3>
                     
                 </div>
                 <div className="contain_button">
-                    <SearchBar onSearch={props.onSearch} />
+                    <SearchBar onSearch={props.onSearch} reLoadAll= {props.reLoadAll}/>
                     
                 </div>
                 <BurgerContainer>

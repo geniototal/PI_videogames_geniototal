@@ -17,15 +17,17 @@ export default function Cards(props) {
             <Paginacion page= {page} setPage= {setPage} pageAmount= {pageAmount}/>
          </div>
          <div className={style.container}>
-            {props.videogames.slice((page-1) * pageSize,((page-1) * pageSize) + pageSize)
-            .map(({ id, name, background_image, Genres, genres, rating})=> {
+            {props?.videogames.slice((page-1) * pageSize,((page-1) * pageSize) + pageSize)
+            .map(({ id, name, background_image, Genres, genres, isofDb, rating}, index)=> {
+               
                return <Card 
-                  key = {id}
+                  key = {index}
                   id={id}
                   rating={rating}
                   name={name}
                   image={background_image}
                   genres= {Genres || genres}
+                  isofDB = {isofDb}
                />
             })}
          </div>

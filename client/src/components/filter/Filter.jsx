@@ -10,8 +10,8 @@ function Filter () {
     let [state, setState] = useState({
         order: "",
         filter: "",
-        origin: "",
-        rating: ""
+        origin: ""
+        
     })
     // Cargar los generos desde la bd
     const [genres, setGenres] = useState([]) //estado para guardar los genres de la db
@@ -50,22 +50,23 @@ console.log(newState);
                 <h3 className = {style.h3}>Filter</h3>
                 <div className= {style.container_select}>
                     <select className= {style.select} name="order" id="" onChange = { handleChange }>
+                        <option className= {style.option} value= "">Order</option>
                         <option className= {style.option} value= "A">A-Z</option>
                         <option className= {style.option} value= "D">Z-A</option>
+                        <option className= {style.option} value="RA">Rating Asc.</option>
+                        <option className= {style.option} value="RD">Rating Desc.</option>
+                        
                     </select>
-                    <select className= {style.select} name="rating" id="" onChange = { handleChange }>
-                        <option className= {style.option} value="RA">Rating asc.</option>
-                        <option className= {style.option} value="RD">Rating desc.</option>
-                    </select>
+                    
                     <select className= {style.select} name="origin" id="" onChange = { handleChange }>
                         <option className= {style.option} value="ALL">ALL</option>
-                        <option className= {style.option} value="API">API</option>
-                        <option className= {style.option} value="DB">DB</option>
+                        <option className= {style.option} value="API"> Only API</option>
+                        <option className= {style.option} value="DB">Only DB</option>
                     </select>
                     <select className= {style.select} name="filter" id="" onChange = { handleChange }>
                         <option className= {style.option} value="All">All genres</option>
-                        {genres.map(({id, name}) => (
-                            <option className= {style.option} value={name}>{name}</option>          
+                        {genres.map(({id, name}, index) => (
+                            <option className= {style.option} key= {index} value={name}>{name}</option>          
                         ))}
                         
                     </select>

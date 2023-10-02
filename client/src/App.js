@@ -3,7 +3,7 @@ import './App.css';
 import {Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux"
-import {getVideogames}  from './redux/actions';
+import {getVideogames, getByName}  from './redux/actions';
 
 //!Importando componentes
 import Backgraund from './components/background/Background';
@@ -26,22 +26,21 @@ function App() {
   const videogames = useSelector((state)=> state.allVideogames)
   console.log(videogames);
   
+  const reLoadAll = () => {
+    dispatch(getVideogames())
+  }
   
   
-  const onSearch = async(name) => {
-    
-     let res = await axios(`http://localhost:3001/videogames/name?name=${name}`)
-    
-      console.log(res.data)
-      let newData= res.data
-      return newData
-       
+  const onSearch = (name) => {
+    if (name !== "") {
+    dispatch(getByName(name))
+    }  
  }
 
   return (
     <div className="App">
       <Backgraund></Backgraund>
-      {location.pathname !== "/" && <Nav onSearch={onSearch} />}
+      {location.pathname !== "/" && <Nav onSearch={onSearch} reLoadAll= {reLoadAll} />}
       <Routes>
             <Route path= "/" element= {<Welcome />} />
             <Route path= "/videogames" element= {<Cards videogames={videogames} />} />

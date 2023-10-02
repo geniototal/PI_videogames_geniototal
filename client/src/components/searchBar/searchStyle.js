@@ -20,8 +20,9 @@ export const Btn = styled.button`
     transform: translateZ(-20px) rotateX(20deg);
     position:relative; */
     font-size: 1.5em;
-    
+    border-radius: 20%;
     color: blue;
+    margin-left: 0.3em;
     &:hover {
       background-color: #00ff40;
       cursor: pointer;
@@ -32,7 +33,7 @@ export const Btn = styled.button`
     border-radius: 0.5em;
     background-color:#ececec;
     width: 250px;
-    margin-left: 0.5em;
+    margin-left: 0.6em;
     padding: 0.5em;
     border: solid rgb(12, 20, 69);
     color: #370617;
@@ -46,3 +47,14 @@ export const Btn = styled.button`
       color:#ececec;
     }
   `;
+  export const Button = styled.button`
+    color: #370617;
+    margin-left: 0.5em;
+    border-radius: 0.5em;
+    font-weight: 700;
+    padding: 0.5em;
+    &:hover {
+      background-color: #00ff40;
+      cursor: pointer;
+    }
+  `

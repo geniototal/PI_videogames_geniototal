@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES, POST_VIDEOGAME, REMOVE_GAME, FILTER, ORDER, FILTERANDORDER } from "./actions";
+import { GET_VIDEOGAMES, POST_VIDEOGAME, REMOVE_GAME, FILTERANDORDER, GET_BY_NAME } from "./actions";
 
 
 
@@ -10,61 +10,86 @@ const inicialState = {
 const rootReducer = (state= inicialState, {type, payload}) => {
     switch (type) {
         case GET_VIDEOGAMES:
+            // No deja pasar los repetidos
+             let gamesFilter = payload.reduce((ac, el) => {
+                if (! ac.find(dato => dato.id === el.id)) {
+                    ac.push(el)
+                }
+                return ac
+            } , [])
+            return {
+                ...state,
+                videogames: gamesFilter,
+                allVideogames: gamesFilter
+            };
+        case POST_VIDEOGAME:
+            console.log(payload);
+            state.allVideogames.push(payload)
+            return {
+                ...state
+                
+            }
+                                                  
+        case REMOVE_GAME:
+         return { ...state, allVideogames: payload, videogames: payload };
+        
+        case GET_BY_NAME:
+            console.log(payload)
             return {
                 ...state,
                 videogames: payload,
                 allVideogames: payload
-            };
-        case POST_VIDEOGAME:
-            return {
-                ...state,
-            }
-                                                  
-        case REMOVE_GAME:
-         return { ...state, allCharacters: payload, myFavorites: payload };
-        
-        case FILTER:
-            const filter = state.allCharacters.filter((char)=> char.gender === payload)
-            return {
-                ...state,
-                myFavorites: filter 
-            }
-        case ORDER:
-            let orderCharacters = state.allCharacters
-            if (payload === "A") {
-            
-                   orderCharacters.sort((x, y) => x.id - y.id)
-            }
-            if (payload === "D") {
-               
-                    orderCharacters.sort((x, y) => y.id - x.id)
-                }
-            return {
-                ...state, 
-                myFavorites: orderCharacters   
             }
         case FILTERANDORDER:
             let orderAndFilter = state.allVideogames
-            console.log(payload);
-            const carlos= orderAndFilter.filter(e => e.rating === 4.47)
-            console.log(carlos);
+            console.log(payload.filter);
+            //Filtrar por genero...aprobado
             if(payload.filter !== "") {
                 if (payload.filter === "All") {
-                   return {
-                    videogames: state.allVideogames
-                   } 
-                }
-                orderAndFilter =  orderAndFilter.filter(videogame => videogame.Genres.includes(payload.filter))
+                    orderAndFilter = state.allVideogames
+                 
+                }else {
+                
+                orderAndFilter =  orderAndFilter.filter(v => v.Genres.includes(payload.filter))
+            }}
+    //Ordenar Por name alfabeticamente y por rating asc y desc...aprobado
+        if (payload.order !== "") {
+            if (payload.order === "A") {
+                orderAndFilter = orderAndFilter.sort((a, b) => {
+                    if (a.name < b.name ) {
+                        return -1
+                    } else if (a.name > b.name) {
+                        return 1
+                    } else { 
+                        return 0
+                    }
+            })
+            
             }
-    //Ordenar Por name
-        /* orderAndFilter.sort((a, b) => {
-            let first = a.name
-            let second = b.name
-            let compare = first.localeCompare(second)
-            return payload.order === 'D' ?  -compare : compare
-        })
-       
-             if(payload.rating === "RA") {
+            if (payload.order === "D") {
+                orderAndFilter = orderAndFilter.sort((a, b) => {
+                    if (a.name < b.name ) {
+                        return 1
+                    } else if (a.name > b.name) {
+                        return -1
+                    } else { 
+                        return 0
+                    }
+            })
+            
+            }  
+            if(payload.order === "RD") {
+                orderAndFilter = orderAndFilter.sort((a, b) => {
+                    if(a.rating > b.rating) {
+                        return -1;
+                    }
+                    if(b.rating > a.rating) {
+                        return 1;
+                    }
+                    return 0;
+                    })
+            }
+            if(payload.order === "RA") {
                 orderAndFilter = orderAndFilter.sort((a, b) => {
                     if(a.rating > b.rating) {
                         return 1;
@@ -74,24 +99,23 @@ const rootReducer = (state= inicialState, {type, payload}) => {
                     }
                     return 0;
                     })
-            
-            } else if(payload.rating === "RD") {
-                orderAndFilter = orderAndFilter.sort((a, b) => b.rating - a.rating)
             }
-
+        
+        }
+        
+        // Ordenar por origen si es API o DB 
             if(payload.origin === "DB") {
                 orderAndFilter = orderAndFilter.filter(videogame => videogame.isofDb === true)
             } else if(payload.origin == "API") {
                 orderAndFilter = orderAndFilter.filter(videogame => !(videogame.isofDb === true))
-            } */
-            
-            
-            return {
-                
-                videogames: orderAndFilter
             }
-        default:
-            return {...state}
+            
+        return {
+            ...state,
+            videogames: orderAndFilter
+        }
+    default:
+        return {...state}
     } 
 }
 export default rootReducer;

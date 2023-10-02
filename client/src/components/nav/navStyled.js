@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
     .h1 {
-        color: white;
-        font-size: 1.5vw;
+        color: #80c1fa;
+        font-size: 1.5em;
     }
     
     position: fixed; 
@@ -31,6 +31,7 @@ export const NavContainer = styled.nav`
     @media(max-width: 768px) {
         .h1 {
             font-size: 3vw;
+           
         }
         .links {
             position: fixed;
