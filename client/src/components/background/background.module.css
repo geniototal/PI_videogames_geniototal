@@ -1,7 +1,7 @@
 .background {    
     min-height: 100vh;
     position: absolute;
-    background-image: url(./img/videogame.png);
+    background-image: url(./img/video-game-6578107_1280.jpg);
     background-size:cover;
     top:0;
     background-repeat: space;
@@ -13,7 +13,7 @@
 }
 @media (max-width: 600px){
     .background {
-        height: 400%;  
+        height: 1300%;  
     }
 }
 @media (min-hight: 100vh){

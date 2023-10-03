@@ -26,6 +26,7 @@ const getVideogameByName = async (name) => {
               ),*/
             genres: e.genres.map(el => {
                 return {name: el.name}
+                // return el.name
             })
         }
     })

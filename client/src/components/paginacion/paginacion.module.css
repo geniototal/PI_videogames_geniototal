@@ -1,12 +1,13 @@
 .container {
     display: flex;
-    margin-top: 7em;
-    gap:10px;
+    margin-top: 4.2em;
+    padding-top: 2em;
+    gap:8px;
     justify-content: center;
     margin-bottom: -7em;
 }
 .button {
-    font-size: 44px;
+    font-size: 30px;
     background-color: #474747;
     border: 1px solid black;
     border-radius: 8%;
@@ -25,8 +26,28 @@
     font-size: 1.2em;
 }
 input {
-    width: 40px;
+    width: 38px;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
+}
+@media(max-width: 768px) {
+    .container {
+        margin-top: 8em;
+    }
+    .button {
+        font-size: 1.3em;
+        
+        border-radius: 8%;
+    }
+    .button:hover {
+        transform: scale(1.05);
+}
+.container {
+    
+    margin-top: 4.2em;
+    padding-top: 2em;
+    
+    margin-bottom: -7em;
+}
 }

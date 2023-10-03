@@ -11,6 +11,7 @@ const Card = ({id, name, image, genres, rating, isofDb}) => {
                   <img className= {style.img} src={image} alt='' />
                 </div>
                 <h3 className={style.genero}><u>Género</u></h3>
+                
                 <h3 className={style.genero}>{
                     genres?.map(e => e + ", ")
                 }</h3>

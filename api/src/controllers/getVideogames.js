@@ -30,8 +30,8 @@ const getVideogames = async () => {
                 }
                 ), */
                 Genres: e.genres.map(el => {
-                    //return {name: el.name}
-                    return el.name
+                    return {name: el.name}
+                   // return el.name
                 })
             }
         })
@@ -50,7 +50,17 @@ const getVideogames = async () => {
     }) 
     
     
+    /* const DbGenres = gamesDb.map((e)=> {
+        return {
+        ...e,
+        Genres: e.Genres.map(e=> {
+            return e.name
+        })
+        }
     
+    })*/
+    console.log(gamesDb+"aca toy");
+
     //Concateno ambas infos de la api y de la db
     const games = gamesApi.concat(gamesDb)
     

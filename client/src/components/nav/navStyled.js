@@ -30,17 +30,24 @@ export const NavContainer = styled.nav`
    
     @media(max-width: 768px) {
         .h1 {
-            font-size: 3vw;
+            font-size: 4.5vw;
+            //display: none;
+            position: absolute;
+            top: 0em;
+            left: auto;
+           margin-bottom: 1em;
+           
            
         }
+        height: 4.5em;
         .links {
             position: fixed;
             top:15vh;
             right: 0;
-            width: 25%;
+            width: 26%;
             padding-top: 3rem;
             padding-bottom: 1.5rem;
-            height: 65vh;
+            height: 60vh;
             background-color: rgba(0,0,0, .7);
             box-shadow: 10px 10px 4px #000;
             border-radius: 1rem;
@@ -72,7 +79,7 @@ export const NavContainer = styled.nav`
         height: 3px;
         background-color: var(--title-color);
         position: absolute;
-        left: 0;
+        left: 5px;
         bottom: -.3rem;
         transition: width .4s;
     }

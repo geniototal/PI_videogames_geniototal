@@ -35,7 +35,7 @@
     right: 7px;
     width: 100px;
     height: 30px;
-    font-size: 12px;
+    font-size: 1.1em;
     line-height: 25px;
     text-align: center;
     border-top: 2px solid #ff851b;
@@ -75,7 +75,7 @@
     border-bottom: 4px solid #ff851b;
     box-sizing: border-box;
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 1.08em;
     font-weight:normal;
     transition: all .5s ease;
 }

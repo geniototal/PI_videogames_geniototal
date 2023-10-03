@@ -19,7 +19,7 @@ const Detail = () => {
     useEffect(()=> {
         getDatos()
     }, [id])        
-    return !videogames.name ? <h1 className={style.h1}>Cargando su personaje...</h1>
+    return !videogames.name ? <h1 className={style.h1}>Cargando su videogame...</h1>
     : (
         
         
