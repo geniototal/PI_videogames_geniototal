@@ -32,3 +32,13 @@ export const Button = styled.button`
     font-weight: bold;
     padding-top: 1em;
   `
+  
+
+export const SubTitle= styled.div`
+color:black;
+text-align: center;
+font-family: 'Courier New', Courier, monospace;
+font-size: 1.5em;
+font-weight: bold;
+padding-top: 1em;
+`

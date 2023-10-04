@@ -26,17 +26,23 @@ export const getVideogames = () => {
 } 
 
 export function postVideogame(payload){
-    return async function(dispatch){
-        const response = await axios.post(URLAllVideos, payload)
-        return dispatch({
-            type: POST_VIDEOGAME,
-            payload: payload
-        }); 
+    try {
+        return async function(dispatch){
+            const response = await axios.post(URLAllVideos, payload)
+            const result = response.data
+            return dispatch({
+                type: POST_VIDEOGAME,
+                payload: [payload, result]
+            }); 
+        }
+    } catch (error) {
+        console.log(error);
     }
 }
 
 export const getByName = name => {
-    const endpoint = `http://localhost:3001/videogames/name?name=${name}`
+    try {
+        const endpoint = `http://localhost:3001/videogames/name?name=${name}`
     return async(dispatch) => {
         const response = await axios.get(endpoint)
      
@@ -46,11 +52,15 @@ export const getByName = name => {
     }
     )
 }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 
  export const removeGame = (id) => {
-    const endpoint = 'http://localhost:3001/videogames/' + id;
+    try {
+        const endpoint = 'http://localhost:3001/videogames/' + id;
     return (dispatch) => {
        axios.delete(endpoint).then(({ data }) => {
           return dispatch({
@@ -59,6 +69,9 @@ export const getByName = name => {
        });
        });
     };
+    } catch (error) {
+        console.log(error);
+    }
  };
 
 

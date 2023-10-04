@@ -35,7 +35,7 @@ router.get("/", async (req, res) => {
 
 
 router.post('/', async(req, res) => {
-    
+    console.log(res)
     try {
         let { name, description, background_image, released, rating, genres, isofDb } = req.body
         console.log("Aca", name, description, background_image, released, rating, genres, isofDb);
@@ -44,17 +44,17 @@ router.post('/', async(req, res) => {
             return
         }
         //console.log("que carajp pasa"+ {name});
-        let allGames = await postGame({
+        let response = await postGame({
             name,
             description,
             released,
             background_image,
-            rating: Number({rating}),
+            rating: rating,
             genres,
             isofDb    
         })
     
-        return res.status(200).json(allGames)
+        return res.status(200).json(response)
     } catch (error) {
         res.status(500).json({error: error.message})
     }

@@ -17,7 +17,7 @@ const Card = ({id, name, image, genres, rating, isofDb}) => {
                 }</h3>
                 
                 <Link to={`/videogames/${id}`}>
-                  <button className={style.button}>See more...</button>
+                  <button className={style.button} >See more...</button>
                 </Link>
           </div>
           

@@ -5,12 +5,14 @@ import Paginacion from '../paginacion/Paginacion';
 
 export default function Cards(props) {
    //Paginado
-   console.log(props);
-   const [page, setPage ] = useState(1)
+   console.log(props.stateFilter);
+   const typefilter= props.stateFilter
+   const [page, setPage ] = useState(1) //page es la pagina actual
    const [pageSize, setPageSize] = useState(15)
-   const pageAmount = Math.ceil(props.videogames.length / pageSize)
+   const pageAmount = Math.ceil(props.videogames.length / pageSize) // cantidad de pag s/cant de cards
 
-   return (
+   return !props.videogames ? <h1 className={style.h1}>Cargando los videogames...</h1>
+   :  (
       <div>
          
          <div className={style.page}>

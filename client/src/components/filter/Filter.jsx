@@ -72,7 +72,7 @@ console.log(newState);
                     </select>
                 </div>
             </div>
-            {<Cards videogames={filterVG}/>}
+            {<Cards videogames={filterVG} stateFilter= {state}/>}
             
         </div>
     )

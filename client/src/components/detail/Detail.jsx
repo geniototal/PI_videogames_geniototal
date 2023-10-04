@@ -5,8 +5,10 @@ import style from './Detail.module.css'
 const Detail = () => {
     const {id} = useParams()
     const [videogames, setVideogames] = useState({})
+    //const scrollPosition = scroll(0,0)
     const getDatos =async () => {
-        let res = await axios.get(`http://localhost:3001/videogames/${id}`)
+        try {
+            let res = await axios.get(`http://localhost:3001/videogames/${id}`)
         let datos= res.data
         console.log(datos);    
         if (!datos.name) {
@@ -15,14 +17,17 @@ const Detail = () => {
                 setVideogames(datos)
                 
             }
+        } catch (error) {
+            console.log(error); 
+        }
     }    
     useEffect(()=> {
         getDatos()
     }, [id])        
     return !videogames.name ? <h1 className={style.h1}>Cargando su videogame...</h1>
-    : (
+    :  (
         
-        
+         
         <div className={style.container}>    
             <div className={style.contenedor}>
                 <div className={style.img}>

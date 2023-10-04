@@ -9,6 +9,11 @@ const Paginacion = ({ page, setPage, pageAmount}) => {
     const previusPage = () => {
         setPage(page - 1)
     }
+    // aca se resetea a la pag 1 si la cantidad de paginas es mayor al numero actual
+    if (pageAmount  < page) {  
+        setPage(1)
+    }
+    
     const numeracion = [];
     let i = 1
     while (i <= pageAmount ) {

@@ -32,7 +32,7 @@ const AddVideogames = () => {
 
     setData({...data, [property]: valor})
     validation({...data, [property]: valor}, setErrors, errors)
-   console.log(data);
+   //console.log(data);
 }
 // Obtengo los generos seleccionados
 const handleCheck = (event) => {
@@ -43,7 +43,7 @@ const handleCheck = (event) => {
     setSelect(select.filter( e => e !== value))
   }
 }
-console.log(select)
+//console.log(select)
   // Cargar los generos desde la bd
   const getGenres = async () => {
     let res = await axios.get(`http://localhost:3001/genres`)
@@ -58,15 +58,26 @@ console.log(select)
   const handleSubmit = (e) => {
     
     e.preventDefault()
-    if (select.length === 0) {
-      alert ("Debe seleccionar al menos un genero")
-    } else {
-    data.genres = select;
-    const videogame = data
-    console.log(videogame);
-    dispatch(postVideogame(videogame))
     
-  } 
+    if (select.length === 0) {
+      alert("Debe seleccionar al menos un genero")
+    }
+    if (errors.name === "" && errors.rating ==="" && errors.released ==="" && errors.background_image===""&& errors.description=== "") {
+      data.genres = select;
+      const videogame = data
+      //console.log(videogame);
+      dispatch(postVideogame(videogame))
+      setData({   
+        name: "",
+        background_image: "",
+        description:"",
+        released: "",
+        rating: "",
+      })
+      setSelect([])
+    } else {
+      alert("Deben ingresar todos los datos completos y en el formato correcto")
+    }
   }
   useEffect(()=> {
     getGenres()

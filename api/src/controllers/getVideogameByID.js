@@ -11,7 +11,7 @@ const getVideogameById = async (id) => {
         let res = await axios(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
     
     if (res.data.name) {
-        console.log("pasa por aca");
+        
         let gameApi = {
             id: res.data.id,
             name: res.data.name,
@@ -23,8 +23,8 @@ const getVideogameById = async (id) => {
         }
         return gameApi
     } else  {
-        console.log("y por aca");
-        console.log(id);
+        
+        //console.log(id);
         const gameDb = await VideoGame.findOne({
             where: {
                 id: id, // busca el id en la db

@@ -3,7 +3,7 @@ import { GET_VIDEOGAMES, POST_VIDEOGAME, REMOVE_GAME, FILTERANDORDER, GET_BY_NAM
 
 
 const inicialState = {    
-    errors: [],
+    messagePost: "",
     videogames: [],
     allVideogames: [],
 }
@@ -33,10 +33,16 @@ const rootReducer = (state= inicialState, {type, payload}) => {
                 allVideogames: data
             };
         case POST_VIDEOGAME:
-            console.log(payload);
-            state.allVideogames.push(payload)
+            console.log(payload[1]);
+            if(payload[1]==="Add"){ //esta respuesta viene del Back
+                state.allVideogames.push(payload[0])
+                alert("Videogame agregado a la DB, pulse reload All")
+            } else {
+                alert(payload[1])
+            }
+            
             return {
-                ...state
+                ...state,
                 
             }
                                                   

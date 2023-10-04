@@ -53,8 +53,8 @@ const validation = (data, setErrors, errors) => {
     if (data.rating!== "") {
       if (isNaN(data.rating[0] * 1)) {
         setErrors({...errors, rating: "Debe ser un numero"})
-      }else if (data.rating > 10) {
-        setErrors({...errors, rating: "Debe ser menor que 10"})
+      }else if (data.rating > 5) {
+        setErrors({...errors, rating: "Debe ser menor que 5"})
       } else {
         if (rg2.test(data.rating)) {
           setErrors({...errors, rating: ""})
